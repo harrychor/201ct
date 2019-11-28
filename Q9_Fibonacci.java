@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Q9_Fibonacci {
 
 	    public static void main(String args[]) {
-	    
+	    try {
 	        System.out.println("Enter number how many Fibonacci series need to print: ");
 	        int MaxNum = new Scanner(System.in).nextInt();
 	      
@@ -13,7 +13,10 @@ public class Q9_Fibonacci {
 	        for(int i=1; i<=MaxNum; i++){
 	            System.out.print(FibonacciSum(i) +" ");
 	        }	  	    
-	    } 
+	    } catch(Exception e) {
+	    	System.out.println("which is not a vaild input.");
+	    }
+	    }
 
 	    public static int FibonacciCal(int number){
 	        if(number == 1 || number == 2){
