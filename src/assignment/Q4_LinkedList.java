@@ -1,20 +1,20 @@
 package assignment;
 
 
-class ListNode {
+class Q4_ListNode {
 
 	Object data;
-	ListNode next;
+	Q4_ListNode next;
 
-	public ListNode(Object o) { data = o; next = null; }
-	public ListNode(Object o, ListNode nextNode)
+	public Q4_ListNode(Object o) { data = o; next = null; }
+	public Q4_ListNode(Object o, Q4_ListNode nextNode)
 		{ data = o; next = nextNode; }
 
 	public Object getData() { return data; }
 	public void setData(Object o) { data = o; }
 
-	public ListNode getNext() { return next; }
-	public void setNext(ListNode next) { this.next = next; }
+	public Q4_ListNode getNext() { return next; }
+	public void setNext(Q4_ListNode next) { this.next = next; }
 
 } // class ListNode
 
@@ -23,14 +23,14 @@ class EmptyListException extends RuntimeException {
 		{ super("List is empty"); }
 } // class EmptyListException
 
-public class Q4_Q5_LinkedList {
+public class Q4_LinkedList {
 
-	protected ListNode head;   // <== chnage to protected for inheriting
-	protected ListNode tail;      // <== change to protected for inheriting
+	protected Q4_ListNode head;   // <== chnage to protected for inheriting
+	protected Q4_ListNode tail;      // <== change to protected for inheriting
 
 	protected  int length;		// the length of the list   <== chnage to protected for inheriting
 
-	public Q4_Q5_LinkedList() {
+	public Q4_LinkedList() {
 		head = tail = null;
 		length = 0;
 	}
@@ -39,17 +39,17 @@ public class Q4_Q5_LinkedList {
 
 	public void addToHead(Object item) {
 		if (isEmpty())
-			head = tail = new ListNode(item);
+			head = tail = new Q4_ListNode(item);
 		else
-			head = new ListNode(item, head);
+			head = new Q4_ListNode(item, head);
 		length++;
 	}
 
 	public void addToTail(Object item) {
 		if (isEmpty())
-			head = tail = new ListNode(item);
+			head = tail = new Q4_ListNode(item);
 		else {
-			tail.setNext(new ListNode(item));
+			tail.setNext(new Q4_ListNode(item));
 			tail = tail.getNext();
 		}
 		length++;
@@ -76,7 +76,7 @@ public class Q4_Q5_LinkedList {
 		if (head == tail)
 			head = tail = null;
 		else {
-			ListNode current = head;
+			Q4_ListNode current = head;
 			while (current.getNext() != tail)
 				current = current.getNext();
 			tail = current;
@@ -88,7 +88,7 @@ public class Q4_Q5_LinkedList {
 
 	public String toString() {
 		String str = "[ ";
-		ListNode current = head;
+		Q4_ListNode current = head;
 		while (current != null) {
 			str = str + current.getData() + " ";
 			current = current.getNext();
@@ -107,8 +107,8 @@ public class Q4_Q5_LinkedList {
 			if (n == 1) return removeFromHead();
 			if (n == length) return removeFromTail();
 			// removal of nth node which has nodes in front and behind
-			ListNode current = head;
-			ListNode previous = null;
+			Q4_ListNode current = head;
+			Q4_ListNode previous = null;
 			for (int i = 1; i < n; i++) { // current will point to nth node
 				previous = current;
 				current = current.getNext();
@@ -134,11 +134,11 @@ public class Q4_Q5_LinkedList {
 			return;
 		}
 		// locate the n-1th node
-		ListNode current = head;
+		Q4_ListNode current = head;
 		for (int i = 1; i < n-1; i++)	// current will point to n-1th node
 			current = current.getNext();
 		// create new node and insert at nth position
-		current.setNext(new ListNode(item, current.getNext()));
+		current.setNext(new Q4_ListNode(item, current.getNext()));
 		length++;
 	}
 
@@ -146,7 +146,7 @@ public class Q4_Q5_LinkedList {
 		// n is too big, no item can be returned
 		if (length < n) return null;
 		// locate the nth node
-		ListNode current = head;
+		Q4_ListNode current = head;
 		for (int i = 1; i < n; i++)
 			current = current.getNext();
 		return current.getData();
