@@ -25,13 +25,17 @@ public class Q8_BinarySearch {
         Q8_BinarySearch ob = new Q8_BinarySearch(); 
         int arr[] = {11, 12, 34,55, 66, 77, 88 }; 
         int n = arr.length; 
+        try {
         Scanner input = new Scanner(System.in);
-        System.out.print("Input are number to search in the array");
+        System.out.print("Input are number to search in the array : ");
         int x =input.nextInt(); 
         int result = ob.binarySearch(arr, 0, n - 1, x); 
         if (result == -1) 
             System.out.println("Element not present"); 
         else
             System.out.println("Element found at index " + result); 
+        }catch(Exception e) {
+        	 System.out.println("no vaild input"); 
+        }
     } 
 }
